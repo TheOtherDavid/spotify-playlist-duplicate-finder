@@ -21,6 +21,9 @@ func main() {
 	//Get Spotify playlist by ID
 	userId := os.Getenv("USER_ID")
 	playlistId := os.Args[1]
+	if playlistId == "" {
+		fmt.Println("Playlist ID not given as an argument. Please specify a Spotify Playlist ID.")
+	}
 
 	fmt.Printf("Playlist ID: %s \n", playlistId)
 
@@ -39,7 +42,11 @@ func main() {
 	}
 	fmt.Println(potentialDuplicates)
 
-	filename := "spotify-duplicates-test"
+	filename := os.Args[2]
+	if filename == "" {
+		filename = "duplicate-spotify-track"
+	}
+
 	//Take that list of tracks and write the band and track name to a file
 	WriteDuplicateTracksToFile(potentialDuplicates, filename)
 	//Use the file to manually take care of the duplicates, to avoid any automation disasters.
