@@ -1,2 +1,4 @@
 # spotify-playlist-duplicate-finder
 For a given Spotify playlist, find any duplicates, based on the track name as a string, including remixes.
+
+One of my friends has a great Spotify playlist, with like 1700 great songs. But the issue is, she's convinced there are duplicates in there, but it would be too hard to sort through and find them. Even worse, sometimes a song appears on multiple different albums. Sometimes a band will release a song as a single, and then later release it again on their full album. By comparing songs based on their name as a string, and not based on the internal Spotify ID, these potential duplicates can be found and dealt with. Because we all know how programs can go out of control, I am not automatically deleting these duplicates, but simply writing them to a file. Deletion can be done manually.
