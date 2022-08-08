@@ -25,15 +25,11 @@ func main() {
 		fmt.Println("Playlist ID not given as an argument. Please specify a Spotify Playlist ID.")
 	}
 
-	fmt.Printf("Playlist ID: %s \n", playlistId)
-
 	playlistTracks, err := GetTracksForPlaylist(playlistId, userId, accessToken)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-
-	fmt.Printf("Playlist Tracks: %s \n", playlistTracks)
 
 	potentialDuplicates, err := GetPotentialDuplicateTracks(playlistTracks)
 	if err != nil {
@@ -111,10 +107,10 @@ func GetPotentialDuplicateTracksForArtistTrackMap(artistTrackMap map[string][]Sp
 
 func WriteDuplicateTracksToFile(potentialDuplicateTracks []SpotifyTrack, filename string) (err error) {
 	file, err := os.Create(filename + ".csv")
-	defer file.Close()
 	if err != nil {
 		return err
 	}
+	defer file.Close()
 	w := csv.NewWriter(file)
 	defer w.Flush()
 
